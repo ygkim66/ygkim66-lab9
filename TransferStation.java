@@ -1,26 +1,31 @@
 import java.util.*;
 public class TransferStation extends Station {
-    protected ArrayList<Station> t;
+    protected ArrayList<Station> otherStations;
+
     public TransferStation(String c, String n){
         super(c,n);
-        t = new ArrayList<>();
+        otherStations = new ArrayList<>();
     }
 
     public void addTransferStationPrev(Station s){
-        t.add(s);
-        s.addNext(this);
-        this.addPrev(s);
+        otherStations.add(s);
+      //  previous.next = this;
+        s.next = this;
+      //  s.addNext(this);
+       // this.addPrev(s);
+      // previous = s;
     }
     public void addTransferStationNext(Station s){
-        t.add(s);
-        s.addPrev(this);
-        this.addNext(s);
+        otherStations.add(s);
+        s.previous = this;
+     //   s.addPrev(this);
+      //  this.addNext(s);
 
     }
     public String toString(){
-        String temp = "TRANSFER" + super.toString() + "\tTransfers: \n";
-        for (int i = 0; i < t.size(); i++){
-            temp += t.get(i).toString();
+        String temp =  "TRANSFER" + super.toString() + "\n\tTransfers: \n";
+        for (int i = 0; i < otherStations.size(); i++){
+            temp += "\t" + otherStations.get(i).toString() + "\n";
         }
         return temp;
     }

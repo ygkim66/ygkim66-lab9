@@ -54,7 +54,7 @@ public class Lab9_Tester {
     assertEquals(true, s1.equals(s5));
     assertEquals(true, s1.equals(s6));
   }
-
+ 
   @Test 
   public void test3(){
     System.out.println("test EndStation setup");
@@ -73,6 +73,9 @@ public class Lab9_Tester {
     EndStation s1 = new EndStation("pink", "Museum");
     Station s2 = new Station("pink", "Square");
     s1.addNext(s2);
+    //-------------------------------------------------------------
+    System.out.println("DEBUG" + s1.getNextName());
+
     String expected = "ENDSTATION Museum: pink line, in service: true, previous station: none, next station: Square";
     assertEquals(expected, s1.toString());
 
@@ -86,6 +89,7 @@ public class Lab9_Tester {
     expected = "ENDSTATION Museum: pink line, in service: true, previous station: Square, next station: none";
     assertEquals(expected, s1.toString());
 
+    System.out.println("DEBUG" + s1.getPrevName());
     s1.makeEnd();
     expected = "ENDSTATION Museum: pink line, in service: true, previous station: Square, next station: Square";
     assertEquals(expected, s1.toString());
@@ -194,8 +198,8 @@ public class Lab9_Tester {
     expected = "ENDSTATION Smithsonian: orange line, in service: true, previous station: Federal Triangle, next station: Federal Triangle";
     assertEquals(expected, next.toString());
   }
-/* 
-  @Test 
+
+  /*@Test 
   public void test9(){
     System.out.println("test red line");
 
@@ -257,7 +261,7 @@ public class Lab9_Tester {
     assertEquals(expected, next.toString());
   }
 
-  @Test 
+  /*@Test 
   public void test11(){
     System.out.println("test short straight trips");
 

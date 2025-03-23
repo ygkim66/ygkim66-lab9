@@ -15,16 +15,34 @@ public class Station {
     public String getName(){
         return name;
     }
+    public String getPrevName(){
+        if (previous == null){
+            return "none";
+        }
+        else
+            return previous.getName();
+    }
+    public String getNextName(){
+        if (next == null){
+            return "none";
+        }
+        else
+            return next.getName();
+    }
     public void addPrev(Station p){
         previous = p;
-    //    p.addNext(this);
+      //  p.addNext(this);
+        p.next = this;
     }
     public Station getPrevStation(){
         return previous;
     }
     public void addNext(Station n){
         next = n;
-    //    n.addPrev(this);
+        n.previous = this;
+      //  n.addPrev(this);
+     //   connect(n);
+
     }
     public Station getNextStation(){
         return next;
@@ -45,9 +63,19 @@ public class Station {
     }
     public void connect(Station s){
         next = s;
-        this.addPrev(s);
+        s.previous = this;
+        //this.addPrev(s);
     }
+/* 
+    public int tripLength(Station dest){
+        if (this.equals(dest)){
+            return ___;
+        }
+    }
+    public int tripLength(Station d, int count){
+        if (count == )
+    }*/
     public String toString(){
-        return "STATION " + name + ": " + color + " line, in service: " + isAvailable + ", previous station: " + previous + ", next station: " + next;
+        return "STATION " + name + ": " + color + " line, in service: " + isAvailable + ", previous station: " + getPrevName() + ", next station: " + getNextName();
     }
 }

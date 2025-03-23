@@ -38,13 +38,40 @@ public class MetroSimulator{
 
 	public static void initialize(){
 		va_square = new EndStation("orange", "Virginia Square");
+
 		clarendon = new Station("orange", "Clarendon");
+	//	va_square.connect(clarendon);
+
 		court_house = new Station("orange", "Court House");
+		//court_house.connect(va_square);
+
 		rosslyn = new Station("orange", "Rosslyn");
+		//rosslyn.connect(court_house);
+
 		foggy_bottom = new Station("orange", "Foggy Bottom");
-		farragut_west = new Station("orange", "Farragut West");
+		//foggy_bottom.connect(rosslyn);
+
+		//foggy_bottom.connect(farragut_west);
 		mcpherson_square = new Station("orange", "McPherson Square");
+
+		farragut_west = new Station("orange", "Farragut West");
+	//	farragut_west.connect(mcpherson_square);
+
+	//	foggy_bottom.connect(farragut_west);
+
+		System.out.println("DEBUG 39243: " + farragut_west.getPrevName());
+	//	farragut_west.connect(foggy_bottom);
+
+		System.out.println("DEBUG 392433434: " + farragut_west.getNextName());
+
+
+		//mcpherson_square.connect(farragut_west);
+
+		//farragut_west.addNext(mcpherson_square);
+
 		metro_center = new TransferStation("orange/red/purple", "Metro Center");
+//		metro_center.connect(mcpherson_square);
+
 		federal_triangle = new Station("orange", "Federal Triangle");
 		smithsonian = new EndStation("orange", "Smithsonian");
 
@@ -65,13 +92,15 @@ public class MetroSimulator{
 
 	public static EndStation makeOrangeLine(){
 		va_square.connect(clarendon);
+		va_square.makeEnd();
 		clarendon.connect(court_house);
 		court_house.connect(rosslyn);
 		rosslyn.connect(foggy_bottom);
 		foggy_bottom.connect(farragut_west);
-		farragut_west.connect(metro_center);
-		metro_center.connect(mcpherson_square);
-		mcpherson_square.connect(federal_triangle);
+		farragut_west.connect(mcpherson_square);
+		mcpherson_square.connect(metro_center);
+		metro_center.connect(federal_triangle);
+		//mcpherson_square.connect(federal_triangle);
 		federal_triangle.connect(smithsonian);
 		smithsonian.makeEnd();
 		//smithsonian.makeEnd(federal_triangle);
