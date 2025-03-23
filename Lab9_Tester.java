@@ -199,7 +199,7 @@ public class Lab9_Tester {
     assertEquals(expected, next.toString());
   }
 
-  /*@Test 
+  @Test 
   public void test9(){
     System.out.println("test red line");
 
@@ -228,7 +228,7 @@ public class Lab9_Tester {
     assertEquals(expected, next.toString());
   }
 
-  @Test 
+  /*@Test 
   public void test10(){
     System.out.println("test purple line");
 
