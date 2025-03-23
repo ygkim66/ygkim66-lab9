@@ -38,40 +38,16 @@ public class MetroSimulator{
 
 	public static void initialize(){
 		va_square = new EndStation("orange", "Virginia Square");
-
 		clarendon = new Station("orange", "Clarendon");
-	//	va_square.connect(clarendon);
-
 		court_house = new Station("orange", "Court House");
-		//court_house.connect(va_square);
-
 		rosslyn = new Station("orange", "Rosslyn");
-		//rosslyn.connect(court_house);
-
 		foggy_bottom = new Station("orange", "Foggy Bottom");
-		//foggy_bottom.connect(rosslyn);
-
-		//foggy_bottom.connect(farragut_west);
 		mcpherson_square = new Station("orange", "McPherson Square");
-
 		farragut_west = new Station("orange", "Farragut West");
-	//	farragut_west.connect(mcpherson_square);
-
-	//	foggy_bottom.connect(farragut_west);
-
-		System.out.println("DEBUG 39243: " + farragut_west.getPrevName());
-	//	farragut_west.connect(foggy_bottom);
-
-		System.out.println("DEBUG 392433434: " + farragut_west.getNextName());
-
-
-		//mcpherson_square.connect(farragut_west);
-
-		//farragut_west.addNext(mcpherson_square);
+	//System.out.println("DEBUG 39243: " + farragut_west.getPrevName());
+		//System.out.println("DEBUG 392433434: " + farragut_west.getNextName());
 
 		metro_center = new TransferStation("orange/red/purple", "Metro Center");
-//		metro_center.connect(mcpherson_square);
-
 		federal_triangle = new Station("orange", "Federal Triangle");
 		smithsonian = new EndStation("orange", "Smithsonian");
 
@@ -136,8 +112,16 @@ public class MetroSimulator{
 
 	public static EndStation makePurpleLine(){
 		s1.connect(s2);
-		
-		//connect the other stations here
+		s1.makeEnd();
+		s2.connect(s3);
+		s3.connect(metro_center);
+
+		metro_center.addPrev(mcpherson_square);
+		metro_center.addTransferStationPrev(s3);
+		metro_center.addTransferStationNext(s4);
+
+		s4.connect(s5);
+		s5.makeEnd();
 
 		return s1;
 	}

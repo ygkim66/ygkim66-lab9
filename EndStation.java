@@ -2,6 +2,9 @@ public class EndStation extends Station{
     public EndStation(String c, String n){
         super(c,n);
     }
+    public String getType(){
+        return "EndStation";
+    }
     public void makeEnd(){
       //  System.out.println("DEBUG: IN MAKENED METHOD" + previous);
       //  System.out.println(next);

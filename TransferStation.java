@@ -6,7 +6,15 @@ public class TransferStation extends Station {
         super(c,n);
         otherStations = new ArrayList<>();
     }
-
+    public String getType(){
+        return "TransferStation";
+    }
+    public int getSize(){
+        return otherStations.size();
+    }
+    public Station access(int index){
+        return otherStations.get(index);
+    }
     public void addTransferStationPrev(Station s){
         otherStations.add(s);
       //  previous.next = this;
