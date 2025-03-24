@@ -94,6 +94,9 @@ public class Station {
     }
     public int transferTripLength(Station dest, Station current, int count){
         int temp = 1;
+        int temp2 = 0;
+ //       if (dest.equals(new Station("orange", "judiciary_square")));
+   //         temp2 =1;
         TransferStation t = (TransferStation)current;
 
         for (int i = 0; i < t.getSize(); i++){
@@ -101,7 +104,7 @@ public class Station {
 
                 int temp9 = tripLength(dest, t.access(i).getNextStation().getNextStation(), 1);
                 if ( temp9> 0){
-                    System.out.println("DOES THIS HIT TEMP9????/");
+                 //   System.out.println("DEBUG: DOES THIS HIT TEMP9????/");
                     temp = temp9;
                 }
             }
@@ -110,10 +113,10 @@ public class Station {
                 if (temp10 >= 0){
                     temp = temp10 ;
                 }
-
+                
             }
         }
-        return temp;
+        return temp + temp2;
 
        // return temp;
     }

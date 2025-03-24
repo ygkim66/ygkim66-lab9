@@ -32,8 +32,6 @@ public class MetroSimulator{
 		makeRedLine();
 		makePurpleLine();
 
-	//	int stops = va_square.tripLength(metro_center);
-	//	System.out.println("There are " + stops + " stops between Virginia Square and Metro Center");
 	}
 
 	public static void initialize(){
@@ -44,8 +42,6 @@ public class MetroSimulator{
 		foggy_bottom = new Station("orange", "Foggy Bottom");
 		mcpherson_square = new Station("orange", "McPherson Square");
 		farragut_west = new Station("orange", "Farragut West");
-	//System.out.println("DEBUG 39243: " + farragut_west.getPrevName());
-		//System.out.println("DEBUG 392433434: " + farragut_west.getNextName());
 
 		metro_center = new TransferStation("orange/red/purple", "Metro Center");
 		federal_triangle = new Station("orange", "Federal Triangle");
@@ -54,14 +50,12 @@ public class MetroSimulator{
 		woodley_park = new EndStation("red", "Woodley Park");
 		dupont_circle = new Station("red", "Dupont Circle");
 		farragut_north = new Station("red", "Farragut North");
-		// Metro Center defined above
 		gallery_place = new Station("red", "Gallery Place");
 		judiciary_square = new EndStation("red", "Judiciary Square");
 
 		s1 = new EndStation("purple", "S1");
 		s2 = new Station("purple", "S2");
 		s3 = new Station("purple", "S3");
-		// Metro Center defined above
 		s4 = new Station("purple", "S4");
 		s5 = new EndStation("purple", "S5");
 	}
@@ -76,11 +70,8 @@ public class MetroSimulator{
 		farragut_west.connect(mcpherson_square);
 		mcpherson_square.connect(metro_center);
 		metro_center.connect(federal_triangle);
-		//mcpherson_square.connect(federal_triangle);
 		federal_triangle.connect(smithsonian);
 		smithsonian.makeEnd();
-		//smithsonian.makeEnd(federal_triangle);
-		//connect the other stations here
 
 		return va_square;
 
@@ -95,17 +86,13 @@ public class MetroSimulator{
 		mcpherson_square.connect(metro_center);
 		
 		metro_center.connect(federal_triangle);
-		//metro_center.connect(gallery_place);
 		
 		metro_center.addTransferStationPrev(farragut_north);
 		metro_center.addTransferStationNext(gallery_place);
 
 
-		//metro_center.addTransferStationNext(judiciary_square);
 		gallery_place.connect(judiciary_square);
-		//judiciary_square.connect(court_house);
 		judiciary_square.makeEnd();
-		//connect the other stations here
 
 		return woodley_park;
 	}
