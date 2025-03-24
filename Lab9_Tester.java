@@ -337,7 +337,7 @@ public class Lab9_Tester {
     MetroSimulator.makePurpleLine();
 
     assertEquals(9, MetroSimulator.va_square.tripLength(MetroSimulator.smithsonian));
-    //assertEquals(9, MetroSimulator.va_square.tripLength(MetroSimulator.judiciary_square));
+    assertEquals(9, MetroSimulator.va_square.tripLength(MetroSimulator.judiciary_square));
     assertEquals(4, MetroSimulator.foggy_bottom.tripLength(MetroSimulator.s4));
     assertEquals(3, MetroSimulator.s2.tripLength(MetroSimulator.gallery_place));
   }

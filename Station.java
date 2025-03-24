@@ -83,53 +83,37 @@ public class Station {
             return count;
         }
         else if (current.getType().equals("EndStation") && count > 0)
-            return -245345;
+            return -19897878;
 
         else if (current instanceof TransferStation){
-            System.out.println("debug transferstation recurs" + current);
-           // count += transferTripLength(dest, (TransferStation)current, count + 1);
-            return count + transferTripLength(dest, current, count + 1);
-           // return count + 2435243;//tripLength(dest, current.getNextStation(), count+1);
+            return count + transferTripLength(dest, current, 1);
         }
         else{
-            System.out.println("DEBUG CURRENT.NEXT" + current.next);
             return tripLength(dest, current.next, count + 1);
         }
     }
     public int transferTripLength(Station dest, Station current, int count){
         int temp = 1;
-        /*System.out.println("DEBUG CURRENT.GETSIZE():" + current.getSize());
-        for (int i = 0; i < current.getSize(); i++){
-            int temp1 = 0;
-            System.out.println( current.access(i));
-
-            if (current.access(i).getNextName().equals(this.getName())){
-                System.out.println("DEBUG GET INTO CURRENT.ACCESS?");
-                temp += tripLength(dest, current.access(i).getNextStation().getNextStation(), temp1 + 1);
-                System.out.println("DEBUG TEMP" + temp);
-            }
-           // else
-             //   temp += tripLength(dest, current.access(i).getNextStation(), temp1 + 1);
-        }*/
         TransferStation t = (TransferStation)current;
-        int temp1 = 0;
-        boolean found = false;
+
         for (int i = 0; i < t.getSize(); i++){
-            if ((t.access(i).getNextStation().equals(this))){
-             //   System.out.println("Current.next = " + t.access(i).getNextStation().toString());
-             //   temp = tripLength(dest, t.access(i).getNextStation().getNextStation(), temp1+1);
-            //    System.out.println("temp = " + temp);
-                if (t.getNextStation().getNextStation().tripLength(dest) > 0){
-                    temp = temp+ (t.getNextStation().getNextStation().tripLength(dest)) + 1;
+            if (t.access(i).getNextStation() instanceof TransferStation){
+
+                int temp9 = tripLength(dest, t.access(i).getNextStation().getNextStation(), 1);
+                if ( temp9> 0){
+                    System.out.println("DOES THIS HIT TEMP9????/");
+                    temp = temp9;
                 }
             }
             else {
-                int temp10 = t.getNextStation().tripLength(dest);
-                if (temp10 > 0)
-                    temp = temp10 + 1;
+                int temp10 = tripLength(dest, t.access(i).getNextStation(), 1);
+                if (temp10 >= 0){
+                    temp = temp10 ;
+                }
+
             }
         }
-        return temp ;
+        return temp;
 
        // return temp;
     }
